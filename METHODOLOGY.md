@@ -22,7 +22,61 @@ and no SBA program language.
 | Cumulative cash by month 36 | $4,589,439 | $3,154,780 |
 | Equity payback | month 37, extrapolated | month 46, extrapolated |
 | Footprint | 4,925 SF | 5,825 SF |
-| Slides | 37 | 41 |
+| Slides | 40 | 41 |
+
+**The two briefs diverged on 2026-08-18.** Ample now carries a priced round with a ratchet,
+follow-on rights and an exit thesis. Surgical is still a flat all-equity ask with no ownership
+percentage, no valuation and no exit path. Read the next section before comparing them.
+
+## Ample's priced round, added 2026-08-18
+
+Surgical has none of this. Every slide, section and paragraph below is gated on a `deal` object
+that exists on the `ampleEquity` scenario alone, and the self-check fails the build if any other
+scenario acquires one.
+
+| | Value |
+|---|---|
+| Raise | $4,750,000 |
+| Starting stake | 30% |
+| Pre-money / post-money at 30% | $11,083,333 / $15,833,333 |
+| Entry multiple, base case | 5.87x operating income |
+| Ratchet cap | 40%, reached at the low case of $1,244,500 |
+| Pre-money / post-money at 40% | $7,125,000 / $11,875,000 |
+| Ratchet threshold | $2,200,000 trailing twelve-month operating income |
+| Expansion reserve | 25% of operating income |
+| Buyback window | years 3 to 5, multiple to be agreed |
+
+**Three corrections were made to the brief as specified, and they should not be quietly reverted.**
+
+The two valuations originally given, $7,125,000 pre and $11,875,000 post, are the **40%** endpoint,
+not the 25% start. $4,750,000 / 0.25 is $19,000,000 post and $14,250,000 pre. The pair was
+mislabelled, not miscalculated.
+
+**The starting stake moved from 25% to 30%.** At 25% the round prices at 7.04x base-case operating
+income, above every published single-location band and inside the range for multi-location
+platforms. A brief that asks a platform multiple for one building that does not exist yet, two
+pages from a table citing those comps, hands a reader the objection. 30% prices at 5.87x, inside
+the 5.0x to 6.5x band for a single location under a strong operator.
+
+**Founder retained income is therefore 70%, not 75%:** $1,888,328 a year at base case. The 75%
+figure followed from the 25% stake that was replaced.
+
+**The exit multiples cite a real source and are narrower than first specified.** Breakwater M&A,
+20 February 2026, gives 3.5x to 6.5x for a single location and 6.0x to 9.0x for a multi-location
+platform, with a +0.5x to 1.0x membership premium. The 7x to 12x+ spread originally asked for is
+not supported by that source; 10x to 12x appears only in secondary sources describing top-tier
+platforms. Quoting 12x against a primary source that stops at 9.0x would be exactly the unsourced
+inflation this project refuses everywhere else. One sourced fact does land in L&K's favour and is
+used: membership and access revenue is 41.9% of the total, above the 30% to 40% band the source
+names as a premium driver.
+
+**What the brief admits rather than hides.** The ratchet cushions the downside without making the
+investor whole: at the low case, 40% of $1,244,500 pays $497,800, less than the $809,283 that 30%
+of base case pays. A build assert holds that inequality true, so if the terms ever change to make
+the protection complete, the build fails and the copy gets corrected rather than quietly becoming
+a lie. Investor cash yield is shown at two distribution assumptions, full distribution and after
+the 25% expansion reserve, because the follow-on rights depend on retaining cash and one column
+alone would contradict the other page.
 
 ## The three decisions behind them
 
@@ -80,6 +134,12 @@ is that a fix to the business lands in both versions on the next build. The self
 these two scenarios still describe the same building as their base: same revenue, same operating
 income, same footprint, same space program, same menu, and no capital line other than the reserve
 moved.
+
+## Known gap
+
+Surgical's copy of this memo, inside `private investments/surgical/` and its published repo, is
+the 2026-08-17 version and does not describe ample's priced round. It was left alone because that
+pass was scoped to ample only. Re-copy this file into that folder when you next touch surgical.
 
 ## What is unchanged and still open
 
