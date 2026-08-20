@@ -556,7 +556,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
 <section id="offering">
   <div class="eyebrow">The offering</div>
   <h2 id="offeringTitle"></h2>
-  <p class="lead mt">The information architecture borrows from how a health club organizes itself rather than how a clinic does. Patients do not shop by billing code; they arrive wanting to feel a specific way.</p>
+  <p class="lead mt" id="offeringLead"></p>
   <div class="grid g3 mt2" id="verbGrid"></div>
 </section>
 
@@ -598,7 +598,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
 <section id="membership">
   <div class="eyebrow">Membership architecture</div>
   <h2>A ladder, not a gate.</h2>
-  <p class="lead mt"><span id="tierCount">Four tiers</span>, each a genuine step up rather than a repackaging of the last. The cheap annual tier is the funnel; the capped monthly tiers are the business. Mechanics follow the proven playbook: a three-month minimum then month-to-month, credits that roll over while active and expire on cancellation, freezes on seven days' notice, tier changes after the initial commitment.</p>
+  <p class="lead mt"><span id="tierCount">Four tiers</span>, each representing a meaningful step up rather than a repackaging of the last. The accessible annual tier serves as the entry point; the capped monthly tiers drive the core business. Mechanics follow a proven playbook: a three-month initial commitment followed by month-to-month billing, credits that roll over while membership remains active and expire upon cancellation, freezes with seven days’ notice, and tier changes available after the initial commitment.</p>
   <div class="tiergrid" id="tierGrid"></div>
 
   <div class="card accent mt2">
@@ -610,15 +610,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
 
 <!-- 7 · FUNNEL -->
 <section id="funnel">
-  <div class="eyebrow">How the ladder fills</div>
-  <h2>The open clinic is the top of the funnel.</h2>
-  <p class="lead mt">Because anyone can book a procedure without joining, every non-member treatment is a paid introduction. The conversion path runs in one direction and each step is cheap to take.</p>
-  <div class="grid g4 mt2">
-    <div class="card"><div class="pill">Step one</div><h3 class="mt">Walks in</h3><p class="muted mt small">Books a procedure<span class="dp"> or buys a day pass</span>. Pays list price. Owes nothing further.</p></div>
-    <div class="card"><div class="pill">Step two</div><h3 class="mt">Becomes a Friend</h3><p class="muted mt small">$300 a year pays for itself on roughly two procedures. Low friction, high volume, and it captures the database.</p></div>
-    <div class="card"><div class="pill">Step three</div><h3 class="mt">Becomes a Resident</h3><p class="muted mt small">Wants the circuit and the room, not just the treatment. This is where recurring revenue begins.</p></div>
-    <div class="card accent"><div class="pill on">Step four</div><h3 class="mt">Becomes Longevity</h3><p class="muted mt small">Physician-delivered programming. Hard capped. The highest retention and the highest lifetime value in the building.</p></div>
-  </div>
+  <div class="eyebrow" id="funnelEyebrow"></div>
+  <h2 id="funnelTitle"></h2>
+  <p class="lead mt" id="funnelLead"></p>
+  <div class="grid g4 mt2" id="funnelGrid"></div>
 </section>
 
 <!-- 8 · SPACE -->
@@ -944,16 +939,30 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
   }
 
   // ---- static renders (scenario-independent) ----
+  function renderFunnel(s){
+    var F = D.copy.funnel;
+    document.getElementById('funnelEyebrow').textContent = F.eyebrow;
+    document.getElementById('funnelTitle').textContent = F.title;
+    document.getElementById('funnelLead').textContent = F.lead;
+    var g = document.getElementById('funnelGrid');
+    clear(g);
+    F.steps.forEach(function(step){
+      var c = el('div','card' + (step.accent ? ' accent' : ''));
+      c.appendChild(el('div','pill' + (step.accent ? ' on' : ''), step.pill));
+      c.appendChild(el('h3','mt', step.title));
+      var body = (step.bodyDayPass && s.accessRevenue > 0) ? step.bodyDayPass : step.body;
+      c.appendChild(el('p','muted mt small', body));
+      g.appendChild(c);
+    });
+  }
+
   function renderStatic(){
-    var VERBS = [
-      ['Restore','Regenerative','Six PRP protocols, therapeutic medications, a ten-drip infusion menu and NAD+ by dose.'],
-      ['Renew','Aesthetics','Neuromodulators and filler, RF microneedling, laser resurfacing.'],
-      ['Recover','Recovery','Hyperbaric oxygen, Ammortal chambers, robotic massage, compression, red light.'],
-      ['Reset','Diagnostics','Advanced biometrics, DEXA, DUTCH, DNA analysis. The baseline everything else is measured against.'],
-      ['Reconnect','The Club','The contrast suite, the Lounge, member events and guest privileges. The reason people come back when nothing hurts.']
-    ];
+    // The verbs and the funnel steps come from the payload rather than from
+    // this file, because the deck presents the same two sections and the copy
+    // is held once in deck-build/copy.js. See the note at the top of it.
+    document.getElementById('offeringLead').textContent = D.copy.offering.lead;
     var vg = document.getElementById('verbGrid');
-    VERBS.forEach(function(v){
+    D.copy.offering.verbs.forEach(function(v){
       var c = el('div','card');
       c.appendChild(el('div','eyebrow', v[0]));
       c.appendChild(el('h3', null, v[1]));
@@ -1892,7 +1901,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
       n.style.display = hasDayPass ? 'none' : '';
     });
     bind(s);
-    renderClinicChips(s); renderSurgery(s);
+    renderClinicChips(s); renderSurgery(s); renderFunnel(s);
     renderTiers(s); renderSpace(s); renderCapacity(s); renderServices(s);
     renderWaterfall(s); renderRamp(s); renderPL(s); renderBand(s);
     renderAskGrid(s); renderUOF(s); renderDeal(s); renderSBA(s); renderTeam(s); renderRisks(s);
