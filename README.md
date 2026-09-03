@@ -17,3 +17,6 @@ node deck-build/model.js && node deck-build/build-assumptions.js && node deck-bu
 ```
 
 METHODOLOGY.md in the parent folder is hand-written and explains the priced round.
+
+L-K-Wellness-Ample-4.75M-Private.pdf is a manual PowerPoint export, not a build output.
+It does NOT refresh when the deck is rebuilt: re-export it, or it goes stale against the .pptx.
