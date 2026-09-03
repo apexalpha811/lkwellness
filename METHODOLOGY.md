@@ -123,7 +123,7 @@ node deck-build/model.js && node deck-build/build-sites.js && node deck-build/bu
 (`design cue/design-system.md`, the same system as the landlord package):
 
 ```bash
-node deck-build/model.js && node deck-build/build-assumptions.js && node deck-build/build-investor.js && node deck-build/check-investor.js
+node deck-build/model.js && node deck-build/build-assumptions.js && node deck-build/build-investor.js && node deck-build/check-investor.js && node deck-build/check-slides.js
 ```
 
 `build-investor.js` follows the landlord package's pattern. Content is assembled once and rendered

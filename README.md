@@ -13,7 +13,7 @@ Source of truth:
 Rebuild, then check:
 
 ```bash
-node deck-build/model.js && node deck-build/build-assumptions.js && node deck-build/build-investor.js && node deck-build/check-investor.js
+node deck-build/model.js && node deck-build/build-assumptions.js && node deck-build/build-investor.js && node deck-build/check-investor.js && node deck-build/check-slides.js
 ```
 
 METHODOLOGY.md in the parent folder is hand-written and explains the priced round.
