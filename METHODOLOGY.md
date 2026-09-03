@@ -109,31 +109,55 @@ inventing one would be the single easiest thing in these documents to attack.
 
 ## How they are built
 
-Exactly the same way as the other five briefs, from the same model. Nothing is retyped, so no
-figure here can disagree with the lender version except where the capital stack genuinely differs.
+Both briefs read the same model, so no figure can disagree with the lender version except where the
+capital stack genuinely differs. From 2026-09-02 the two briefs are built by different builders,
+because they wear different designs.
+
+**Surgical private** is built by the shared builders, in the rose palette the lender briefs use:
 
 ```bash
 node deck-build/model.js && node deck-build/build-sites.js && node deck-build/build-assumptions.js && node deck-build/build-deck.js
 ```
 
-The two scenarios are `ampleEquity` and `surgicalEquity` in `deck-build/model.js`, derived from
-`ample` and `surgical` with `Object.assign` and a `dataKey` back to the base, the same pattern the
-private-equity variants use. They carry one flag, `allEquity: true`, and every difference in every
-artifact hangs off that flag:
+**Ample private** is built by its own builder, in the dark-luxury design system
+(`design cue/design-system.md`, the same system as the landlord package):
 
-- `model.js` drives all debt fields to zero, sets `dscr` to null and an empty `rateBand`, and adds
-  `unleveredYield`, `cumulativeCash36` and `paybackMonth`.
-- `build-deck.js` swaps the SBA package slide for a capital-and-returns slide, and branches the
-  cover, footer, ask, use of funds, ramp, sensitivity band, disclosures, timeline, risks and close.
-- `site-template.html` hides the lender framing and renders the same capital section in its place.
-  All seven sites still share this one template.
-- `build-assumptions.js` swaps the capital-stack table and the rent sensitivity column.
+```bash
+node deck-build/model.js && node deck-build/build-assumptions.js && node deck-build/build-investor.js && node deck-build/check-investor.js
+```
 
-**Do not fork the deck or the template to make a change here.** The whole point of the derivation
-is that a fix to the business lands in both versions on the next build. The self-check asserts that
-these two scenarios still describe the same building as their base: same revenue, same operating
-income, same footprint, same space program, same menu, and no capital line other than the reserve
-moved.
+`build-investor.js` follows the landlord package's pattern. Content is assembled once and rendered
+twice, to the 42-slide deck and to a single self-contained page, so the two cannot disagree; the
+slide helpers, the stylesheet (`theme-gold.js`) and the image pipeline are imported from
+`build-landlord.js`, not copied. The methodology page takes the same stylesheet through a switch in
+`build-assumptions.js`. `check-investor.js` proves site and deck parity, scans for lender language
+and retired terms, and confirms the headline figures are present in both artifacts. The shared
+builders no longer write into `ample/`, and it has no `data.js`: the page is static.
+
+The two scenarios are still `ampleEquity` and `surgicalEquity` in `deck-build/model.js`, derived
+from `ample` and `surgical` with a `dataKey` back to the base. They carry one flag,
+`allEquity: true`, and `ampleEquity` also carries the `deal` block. Every number on every page
+and slide comes from those objects; the builders type prose, never figures.
+
+**Why the deck was forked, when the rule here used to say never to.** The design differs in
+structure, not palette: cards instead of rounded panels, uppercase Cormorant titles held to one
+line, a photo cover, a floor plan and a rendering gallery the shared builder has no place for.
+Parametrising `build-deck.js` for that would have pushed the gold system onto six lender briefs on
+public repos. The rule that survives is the one that matters: the numbers are derived, not retyped,
+and the self-check asserts that both scenarios still describe the same building as their base.
+
+**The 42 slides.** Cover, positioning, problem, insight, model, offering, membership, founding,
+funnel, facility (the landlord's stat-cards-over-program layout under the investor's own heading),
+stations, floor plan, renderings across two pages, capacity, market, Playa Vista, unit economics
+across two pages, revenue model, ramp, stabilized P&L, sensitivity, the ask with use of funds on
+the same page, the ratchet, capital and returns, follow-on rights, exit, disclosures, timeline,
+founders, team, risks, close. Then an eight-page appendix: build-ups and the staff roster, the
+other overhead lines, cost of goods with rent sensitivity, use of funds itemised, use of funds
+covered, and provenance across three pages.
+
+Nine slide titles are shorter than their page headings because the design system holds a slide
+title to 32 uppercase characters. The page keeps the full sentence and `check-investor.js` lists
+each pair as a deliberate exception.
 
 ## Known gap
 
