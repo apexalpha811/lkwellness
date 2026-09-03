@@ -146,13 +146,13 @@ Parametrising `build-deck.js` for that would have pushed the gold system onto si
 public repos. The rule that survives is the one that matters: the numbers are derived, not retyped,
 and the self-check asserts that both scenarios still describe the same building as their base.
 
-**The 42 slides.** Cover, positioning, problem, insight, model, offering, membership, founding,
+**The 43 slides.** Cover, positioning, problem, insight, model, offering, membership, founding,
 funnel, facility (the landlord's stat-cards-over-program layout under the investor's own heading),
 stations, floor plan, renderings across two pages, capacity, market, Playa Vista, unit economics
 across two pages, revenue model, ramp, stabilized P&L, sensitivity, the ask with use of funds on
 the same page, the ratchet, capital and returns, follow-on rights, exit, disclosures, timeline,
-founders, team, risks, close. Then an eight-page appendix: build-ups and the staff roster, the
-other overhead lines, cost of goods with rent sensitivity, use of funds itemised, use of funds
+founders, team, risks, close. Then a nine-page appendix: build-ups and the staff roster, the
+other overhead lines, cost of goods, rent sensitivity, use of funds itemised, use of funds
 covered, and provenance across three pages.
 
 Nine slide titles are shorter than their page headings because the design system holds a slide
