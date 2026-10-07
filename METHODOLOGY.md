@@ -107,6 +107,34 @@ investor returns**. Every artifact says so in those words. No IRR and no exit mu
 anywhere, because nothing in this model supports a terminal value that could be sourced, and
 inventing one would be the single easiest thing in these documents to attack.
 
+## The location
+
+The brief described an unbuilt facility in Playa Vista until October 2026. It now describes a real
+suite: **4655 Admiralty Way, Suite 210, Marina del Rey, CA 90292**, on the second floor of the
+curved glass building at the head of the main channel, with a terrace demised to the suite.
+
+**No financial figure moved.** The suite is about 4,925 SF, which is what the model was already
+built on, so the space program, the capacity build, the buildout cost and the rent line are
+unchanged. The lease was in negotiation when this was written and no rent figure existed, so rent
+remains a stated assumption at $5.50/SF/month NNN and the register keeps its caveat. **A signed
+lease is the single highest-value update available to this document**, because it replaces the
+largest hole in it with a fact.
+
+Two slides and one website section carry the four photographs. The shell interior is the one that
+matters: it is the only image in the brief that proves the buildout line of the use of funds is
+buying something real, because you can see there is nothing there yet.
+
+**The sunset photograph is captioned as the district, never as the view from the suite.** It is shot
+from far above a second floor and its provenance was not confirmed. That caption is deliberate.
+
+**Playa Vista still appears, and every surviving mention is correct.** The catchment figures (median
+household income, the Silicon Beach company count, employment at The Campus) are sourced figures
+about the neighbouring district and are still true of it; the drive-time list names both; and the
+provenance notes in the appendix refer to an earlier Playa Vista version of this model, which is
+where some cost ranges genuinely came from. The framing sentence on the market page places the
+facility in Marina del Rey, two miles west, inside the same corridor. **No Marina del Rey
+demographic figure was invented.** If one is wanted it needs a source like every other number here.
+
 ## How they are built
 
 Both briefs read the same model, so no figure can disagree with the lender version except where the
@@ -146,12 +174,12 @@ Parametrising `build-deck.js` for that would have pushed the gold system onto si
 public repos. The rule that survives is the one that matters: the numbers are derived, not retyped,
 and the self-check asserts that both scenarios still describe the same building as their base.
 
-**The 43 slides.** Cover, positioning, problem, insight, model, offering, membership, founding,
-funnel, facility (the landlord's stat-cards-over-program layout under the investor's own heading),
-stations, floor plan, renderings across two pages, capacity, market, Playa Vista, unit economics
-across two pages, revenue model, ramp, stabilized P&L, sensitivity, the ask with use of funds on
-the same page, the ratchet, capital and returns, follow-on rights, exit, disclosures, timeline,
-founders, team, risks, close. Then a nine-page appendix: build-ups and the staff roster, the
+**The 45 slides.** Cover, positioning, problem, insight, model, offering, membership, founding,
+funnel, the location, the space today, facility (the landlord's stat-cards-over-program layout
+under the investor's own heading), stations, floor plan, renderings across two pages, capacity,
+market, the catchment, unit economics across two pages, revenue model, ramp, stabilized P&L,
+sensitivity, the ask with use of funds on the same page, the ratchet, capital and returns,
+follow-on rights, exit, disclosures, timeline, founders, team, risks, close. Then a nine-page appendix: build-ups and the staff roster, the
 other overhead lines, cost of goods, rent sensitivity, use of funds itemised, use of funds
 covered, and provenance across three pages.
 
